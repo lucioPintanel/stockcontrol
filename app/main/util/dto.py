@@ -17,3 +17,11 @@ class AuthDto:
         'email': fields.String(required=True, description='The email address'),
         'password': fields.String(required=True, description='The user password '),
     })
+
+
+class TUnitDto:
+    api = Namespace('typeunit', description='type unit related operations')
+    typeunit = api.model('typeunit', {
+        'typeunit':fields.String(required=True, description='tipo de unidades'),
+        'product':fields.String(description='Identificador do produto')
+    })
