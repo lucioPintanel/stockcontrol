@@ -1,5 +1,6 @@
 from .. import db
 
+
 class PaymentConditions(db.Model):
     """
     Payment Conditions Model
@@ -13,11 +14,11 @@ class PaymentConditions(db.Model):
     qtd = db.Column(db.Integer, nullable=True)
     # Dia de vencimento
     dayPayment = db.Column(db.Integer, nullable=True)
-    
+
     def __init__(self, typePayment, qtd, dayPayment):
-		self.typePayment = typePayment
-		self.qtd = qtd
-		self.dayPayment = dayPayment
+        self.typePayment = typePayment
+        self.qtd = qtd
+        self.dayPayment = dayPayment
 
     def __repr__(self):
         return '<Tipo de Pagamento: {}'.format(self.typePayment)

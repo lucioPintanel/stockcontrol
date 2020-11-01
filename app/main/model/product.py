@@ -10,7 +10,7 @@ class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
-    status=db.Column(db.String(1), nullable=False) #indicar ativo ou inativo
+    status=db.Column(db.Boolean, default=False, nullable=False)
     fabricante = db.Column(db.String(80), unique=False, nullable=True)
     setor = db.Column(db.String(80), unique=False, nullable=True)
     medida = db.Column(db.String(80), unique=False, nullable=True)
