@@ -6,7 +6,7 @@ from app.main.model.typeunit import TypeUnit
 
 
 def save_new_typeUnit(data):
-    typeUnit = TypeUnit.query.filter_by(id=data['id']).first()
+    typeUnit = TypeUnit.query.filter_by(typeunit=data['typeunit']).first()
     if not typeUnit:        
         new_typeUnit = TypeUnit(
             typeunit=data['typeunit']

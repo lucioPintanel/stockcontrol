@@ -8,7 +8,7 @@ from ..service.type_unit_service import get_all_typeUnit, save_new_typeUnit
 api = TUnitDto.api
 _typeUnit = TUnitDto.type_unit
 
-@api.route('/', methods = ['POST', 'GET'])
+@api.route('/')
 class TypeUnitList(Resource):
     @api.doc('list_of_registered_type_units')
     @api.marshal_list_with(_typeUnit, envelope='data')
@@ -22,4 +22,4 @@ class TypeUnitList(Resource):
     def post(self):
         """Creates a new User """
         data = request.json
-        return save_new_typeUnit(data=data)
+        return save_new_typeUnit(data=data) 
