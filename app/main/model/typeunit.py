@@ -10,8 +10,5 @@ class TypeUnit(db.Model):
     typeunit = db.Column(db.String(5), unique=True, nullable=False)
     product = db.relationship('Product', backref='products', lazy=True)
 
-    def __init__(self, typeunit):
-        self.typeunit= typeunit
-
     def __repr__(self):
         return '<id: typeunit: {}'.format(self.typeunit)

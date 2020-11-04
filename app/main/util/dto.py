@@ -20,8 +20,7 @@ class AuthDto:
 
 
 class TUnitDto:
-    api = Namespace('typeunit', description='type unit related operations')
-    typeunit = api.model('typeunit', {
-        'typeunit':fields.String(required=True, description='tipo de unidades'),
-        'product':fields.String(description='Identificador do produto')
+    api = Namespace('type_unit', description='type unit related operations')
+    type_unit = api.model('type_unit', {
+        'typeunit': fields.String(required=True, description='tipo de unidades')
     })
