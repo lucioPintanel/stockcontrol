@@ -1,8 +1,8 @@
-"""Adicionado as novas tabelas
+"""$2
 
-Revision ID: 0329f5d60fad
+Revision ID: 9ae86712cef9
 Revises: 
-Create Date: 2020-11-01 18:14:01.176322
+Create Date: 2020-11-04 21:49:52.022644
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0329f5d60fad'
+revision = '9ae86712cef9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -90,9 +90,9 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(length=80), nullable=False),
     sa.Column('status', sa.Boolean(), nullable=False),
-    sa.Column('fabricante', sa.String(length=80), nullable=True),
-    sa.Column('setor', sa.String(length=80), nullable=True),
-    sa.Column('medida', sa.String(length=80), nullable=True),
+    sa.Column('manufacturers', sa.String(length=80), nullable=True),
+    sa.Column('sector', sa.String(length=80), nullable=True),
+    sa.Column('measure', sa.String(length=80), nullable=True),
     sa.Column('type_units_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['type_units_id'], ['type_units.id'], ),
     sa.PrimaryKeyConstraint('id'),
