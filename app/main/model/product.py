@@ -14,7 +14,7 @@ class Product(db.Model):
     status = db.Column(db.Boolean, default=False, nullable=False)
     manufacturers = db.Column(db.String(80), unique=False, nullable=True)
     sector = db.Column(db.String(80), unique=False, nullable=True)
-    measure = db.Column(db.String(80), unique=False, nullable=True)
+    measure = db.Column(db.Integer, unique=False, nullable=True)
     type_units_id = db.Column(db.Integer, db.ForeignKey('type_units.id'),
                               nullable=False)
 

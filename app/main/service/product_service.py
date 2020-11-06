@@ -2,8 +2,8 @@ from app.main import db
 from app.main.model.product import Product
 
 
-def save_new_typeUnit(data):
-    product = Product.query.filter_by(product=data['product']).first()
+def save_new_product(data):
+    product = Product.query.filter_by(name=data['name']).first()
     if not product:
         new_product = Product(
             name=data['name'],
@@ -23,7 +23,7 @@ def save_new_typeUnit(data):
         return response_object, 409
 
 
-def get_all_typeUnit():
+def get_all_product():
     return Product.query.all()
 
 

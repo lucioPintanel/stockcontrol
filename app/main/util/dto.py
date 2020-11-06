@@ -26,14 +26,14 @@ class TUnitDto:
     })
 
 
-class Product:
+class ProductDto:
     api = Namespace('product', description='type unit related operations')
-    type_unit = api.model('product', {
+    product = api.model('product', {
         'name': fields.String(required=True, description='product name'),
         'status' : fields.Boolean(required=True, description='status product', default=True),
         'manufacturers' : fields.String(required=False, description='manufacturers name'),
         'sector' : fields.String(required=False, description='sector name'),
-        'measure' : fields.String(required=True, description='measure name'),
+        'measure' : fields.Integer(required=True, description='measure name'),
         'type_units_id' : fields.Integer(required=True, description='type unit id')
     })
     
