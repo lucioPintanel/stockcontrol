@@ -235,6 +235,7 @@ dmypy.json
 
 # Data Base
 *.db
+migrations
 
 ### VirtualEnv ###
 # Virtualenv
