@@ -8,6 +8,8 @@ from .main.controller.product_controller import api as product_ns
 from .main.controller.provider_controller import api as provider_ns
 from .main.controller.paycondit_controller import api as paycondit_controller_ns
 from .main.controller.order_controller import api as order_ns
+from .main.controller.productEntry_controller import api as productEntry_ns
+from .main.controller.productOut_controller import api as productOut_ns
 
 blueprint = Blueprint('api', __name__)
 
@@ -24,3 +26,5 @@ api.add_namespace(product_ns, path='/product')
 api.add_namespace(provider_ns, path='/provider')
 api.add_namespace(paycondit_controller_ns, path='/paycondit')
 api.add_namespace(order_ns, path='/order')
+api.add_namespace(productEntry_ns, path='/product_entry')
+api.add_namespace(productOut_ns, path='/product_out')

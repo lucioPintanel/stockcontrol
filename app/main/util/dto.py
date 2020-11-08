@@ -48,16 +48,20 @@ class ProviderDto:
         'telephone': fields.String(required=True, description='supplier contact telephone'),
     })
 
+
 class PayCondDto:
-    api = Namespace('pay_cond', description='payment conditions related operations')
+    api = Namespace(
+        'pay_cond', description='payment conditions related operations')
     pay_cond = api.model('pay_cond', {
         'typePayment': fields.String(required=True, description='payment type'),
         'qtd': fields.Integer(required=True, description='number of times'),
-        'payday':fields.Integer(required=True, description='payment of day'),
+        'payday': fields.Integer(required=True, description='payment of day'),
     })
 
+
 class OrderDto:
-    api = Namespace('order', description='payment conditions related operations')
+    api = Namespace(
+        'order', description='payment conditions related operations')
     order = api.model('order', {
         'product_id': fields.Integer(required=True, description='ID of product'),
         'provider_id': fields.Integer(required=True, description='ID of provider'),
@@ -73,13 +77,15 @@ class OrderDto:
 
 
 class ProEntryDto:
-    api = Namespace('prodEntry', description='product entry related operations')
+    api = Namespace(
+        'prodEntry', description='product entry related operations')
     prodEntry = api.model('prodEntry', {
         'product_id': fields.Integer(required=True, description='ID of product'),
         'qtd': fields.Integer(required=True, description='number of times'),
         'value_unity': fields.Integer(required=True, description='value unity'),
         'issuing_date': fields.DateTime(required=True, description='issuing date'),
     })
+
 
 class ProOutDto:
     api = Namespace('prodOut', description='product out related operations')
