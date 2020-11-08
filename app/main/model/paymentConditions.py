@@ -13,13 +13,13 @@ class PaymentConditions(db.Model):
     # Numero de parcelas
     qtd = db.Column(db.Integer, nullable=True)
     # Dia de vencimento
-    dayPayment = db.Column(db.Integer, nullable=True)
+    payday = db.Column(db.Integer, nullable=True)
     order = db.relationship("Order")
 
-    def __init__(self, typePayment, qtd, dayPayment):
+    def __init__(self, typePayment, qtd, payday):
         self.typePayment = typePayment
         self.qtd = qtd
-        self.dayPayment = dayPayment
+        self.payday = payday
 
     def __repr__(self):
         return '<Tipo de Pagamento: {}'.format(self.typePayment)

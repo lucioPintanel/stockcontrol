@@ -44,6 +44,14 @@ class ProviderDto:
         'name': fields.String(required=True, description='provider name'),
         'cnpj': fields.String(required=True, description='cnpj'),
         'contact': fields.String(required=True, description='supplier contact'),
-        'enail': fields.String(required=True, description='supplier contact email'),
+        'email': fields.String(required=True, description='supplier contact email'),
         'telephone': fields.String(required=True, description='supplier contact telephone'),
+    })
+
+class PayCondDto:
+    api = Namespace('pay_cond', description='payment conditions related operations')
+    pay_cond = api.model('pay_cond', {
+        'typePayment': fields.String(required=True, description='payment type'),
+        'qtd': fields.Integer(required=True, description='number of times'),
+        'payday':fields.Integer(required=True, description='number of times'),
     })
