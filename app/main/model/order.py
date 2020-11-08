@@ -9,7 +9,7 @@ class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
-    provider_id = db.Column(db.Integer, db.ForeignKey('providers.id'))
+    provider_id = db.Column(db.Integer, db.ForeignKey('provider.id'))
     payment_conditions_id = db.Column(
         db.Integer, db.ForeignKey('payment_conditions.id'))
     qtd = db.Column(db.Integer, nullable=False)

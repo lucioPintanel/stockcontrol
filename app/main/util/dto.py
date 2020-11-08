@@ -27,13 +27,23 @@ class TUnitDto:
 
 
 class ProductDto:
-    api = Namespace('product', description='type unit related operations')
+    api = Namespace('product', description='product related operations')
     product = api.model('product', {
         'name': fields.String(required=True, description='product name'),
-        'status' : fields.Boolean(required=True, description='status product', default=True),
-        'manufacturers' : fields.String(required=False, description='manufacturers name'),
-        'sector' : fields.String(required=False, description='sector name'),
-        'measure' : fields.Integer(required=True, description='measure name'),
-        'type_units_id' : fields.Integer(required=True, description='type unit id')
+        'status': fields.Boolean(required=True, description='status product', default=True),
+        'manufacturers': fields.String(required=False, description='manufacturers name'),
+        'sector': fields.String(required=False, description='sector name'),
+        'measure': fields.Integer(required=True, description='measure name'),
+        'type_units_id': fields.Integer(required=True, description='type unit id')
     })
-    
+
+
+class ProviderDto:
+    api = Namespace('provider', description='provider related operations')
+    provider = api.model('provider', {
+        'name': fields.String(required=True, description='provider name'),
+        'cnpj': fields.String(required=True, description='cnpj'),
+        'contact': fields.String(required=True, description='supplier contact'),
+        'enail': fields.String(required=True, description='supplier contact email'),
+        'telephone': fields.String(required=True, description='supplier contact telephone'),
+    })

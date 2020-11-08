@@ -17,6 +17,7 @@ class Product(db.Model):
     measure = db.Column(db.Integer, unique=False, nullable=True)
     type_units_id = db.Column(db.Integer, db.ForeignKey('type_units.id'),
                               nullable=False)
+    order = db.relationship("Order")
 
     def __init__(self, name, status, manufacturers, sector, measure, type_units_id):
         self.name = name

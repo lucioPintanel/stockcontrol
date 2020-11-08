@@ -14,6 +14,7 @@ class PaymentConditions(db.Model):
     qtd = db.Column(db.Integer, nullable=True)
     # Dia de vencimento
     dayPayment = db.Column(db.Integer, nullable=True)
+    order = db.relationship("Order")
 
     def __init__(self, typePayment, qtd, dayPayment):
         self.typePayment = typePayment
