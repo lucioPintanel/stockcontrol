@@ -13,7 +13,7 @@ class ProductEntry(db.Model):
     value_unity = db.Column(db.Integer, nullable=False)
     issuing_date = db.Column(db.DateTime, nullable=False)
 
-    def __init__(self, qtd, value_unity, issuance_date):
+    def __init__(self, id_product, qtd, value_unity, issuance_date):
         self.id_product = id_product
         self.qtd = qtd
         self.value_unity = value_unity

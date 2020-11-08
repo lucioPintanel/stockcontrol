@@ -11,7 +11,7 @@ class ProductOut(db.Model):
     id_product = db.Column(db.Integer, nullable=False)
     qtd = db.Column(db.Integer, nullable=False)
     value_unity = db.Column(db.Integer, nullable=False)
-    issuing_date = db.Column(db.DateTime, nullable=False)
+    departure_date = db.Column(db.DateTime, nullable=False)
 
     def __init__(self, id_product, qtd, value_unity, departure_date):
         self.id_product = id_product

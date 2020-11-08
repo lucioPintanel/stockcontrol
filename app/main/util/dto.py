@@ -70,3 +70,22 @@ class OrderDto:
         'value_total': fields.Integer(required=True, description='value total'),
         'percentage_value': fields.Integer(required=True, description='percentage value'),
     })
+
+
+class ProEntryDto:
+    api = Namespace('prodEntry', description='product entry related operations')
+    prodEntry = api.model('prodEntry', {
+        'product_id': fields.Integer(required=True, description='ID of product'),
+        'qtd': fields.Integer(required=True, description='number of times'),
+        'value_unity': fields.Integer(required=True, description='value unity'),
+        'issuing_date': fields.DateTime(required=True, description='issuing date'),
+    })
+
+class ProOutDto:
+    api = Namespace('prodOut', description='product out related operations')
+    prodOut = api.model('prodOut', {
+        'product_id': fields.Integer(required=True, description='ID of product'),
+        'qtd': fields.Integer(required=True, description='number of times'),
+        'value_unity': fields.Integer(required=True, description='value unity'),
+        'departure_date': fields.DateTime(required=True, description='departure date'),
+    })
