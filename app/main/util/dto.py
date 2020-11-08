@@ -53,5 +53,20 @@ class PayCondDto:
     pay_cond = api.model('pay_cond', {
         'typePayment': fields.String(required=True, description='payment type'),
         'qtd': fields.Integer(required=True, description='number of times'),
-        'payday':fields.Integer(required=True, description='number of times'),
+        'payday':fields.Integer(required=True, description='payment of day'),
+    })
+
+class OrderDto:
+    api = Namespace('order', description='payment conditions related operations')
+    order = api.model('order', {
+        'product_id': fields.Integer(required=True, description='ID of product'),
+        'provider_id': fields.Integer(required=True, description='ID of provider'),
+        'payment_conditions_id': fields.Integer(required=True, description='ID of payment condition'),
+        'qtd': fields.Integer(required=True, description='number of times'),
+        'issuance_date': fields.DateTime(required=True, description='issuance date'),
+        'expected_date': fields.DateTime(required=True, description='expected date'),
+        'issuing_date': fields.DateTime(required=True, description='issuing date'),
+        'devolution': fields.Boolean(required=True, description='status devolution', default=False),
+        'value_total': fields.Integer(required=True, description='value total'),
+        'percentage_value': fields.Integer(required=True, description='percentage value'),
     })
