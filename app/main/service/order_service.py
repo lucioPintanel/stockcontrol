@@ -1,5 +1,12 @@
+from datetime import datetime
+
 from app.main import db
 from app.main.model.order import Order
+
+#Convert string to date
+def StrToDate(str):
+    date = datetime.strptime(str, "%Y-%m-%d %H:%M:%S")
+    return date.date()
 
 
 def save_new_order(data):
@@ -10,9 +17,9 @@ def save_new_order(data):
             provider_id=data['provider_id'],
             payment_conditions_id=data['payment_conditions_id'],
             qtd=data['qtd'],
-            issuance_date=data['issuance_date'],
-            expected_date=data['expected_date'],
-            issuing_date=data['issuing_date'],
+            issuance_date=StrToDate(data['issuance_date']),
+            expected_date=StrToDate(data['expected_date']),
+            issuing_date=StrToDate(data['issuing_date']),
             devolution=data['devolution'],
             value_total=data['value_total'],
             percentage_value=data['percentage_value']

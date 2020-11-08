@@ -22,4 +22,4 @@ class TypeUnitList(Resource):
     def post(self):
         """Creates a new User """
         data = request.json
-        return save_new_typeUnit(data=data) 
+        return save_new_order(data=data) 
