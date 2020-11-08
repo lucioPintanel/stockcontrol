@@ -1,13 +1,7 @@
-from datetime import datetime
-
 from app.main import db
 from app.main.model.order import Order
 
-#Convert string to date
-def StrToDate(str):
-    date = datetime.strptime(str, "%Y-%m-%d %H:%M:%S")
-    return date.date()
-
+from ..util.convert import StrToDate
 
 def save_new_order(data):
     order = None
