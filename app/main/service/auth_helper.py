@@ -10,7 +10,7 @@ class Auth:
             # fetch the user data
             user = User.query.filter_by(email=data.get('email')).first()
             if user and user.check_password(data.get('password')):
-                auth_token = User.encode_auth_token(user.id)
+                auth_token = User.encode_auth_token(user.public_id)
                 if auth_token:
                     response_object = {
                         'status': 'success',
@@ -60,11 +60,12 @@ class Auth:
     @staticmethod
     def get_logged_in_user(new_request):
         # get the auth token
-        auth_token = new_request.headers.get('Authorization')
+        auth_token = new_request.headers['Authorization']
+        token=auth_token.split(" ",1)
         if auth_token:
-            resp = User.decode_auth_token(auth_token)
-            if not isinstance(resp, str):
-                user = User.query.filter_by(id=resp).first()
+            resp = User.decode_auth_token(token[1])
+            if isinstance(resp, str):
+                user = User.query.filter_by(public_id=resp).first()
                 response_object = {
                     'status': 'success',
                     'data': {
