@@ -62,7 +62,7 @@ class Auth:
         # get the auth token
         auth_token = new_request.headers['Authorization']
         token=auth_token.split(" ",1)
-        if auth_token:
+        if auth_token and token:
             resp = User.decode_auth_token(token[1])
             if isinstance(resp, str):
                 user = User.query.filter_by(public_id=resp).first()
