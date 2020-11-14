@@ -3,18 +3,20 @@ from flask_restx import Resource
 
 from app.main.util.decorator import admin_token_required, token_required
 from ..util.dto import UserDto
-from ..service.user_service import save_new_user, get_all_users, get_a_user
+from ..service.user_service import save_new_user, get_all_users, get_a_user, del_a_user
 
 api = UserDto.api
 _user = UserDto.user
 
 
 @api.route('/')
+@api.route('/<public_id>')
 class UserList(Resource):
     @api.doc('list_of_registered_users')
     @admin_token_required
     @api.marshal_list_with(_user, envelope='data')
     def get(self):
+        print("Get a user")
         """List all registered users"""
         return get_all_users()
 
@@ -25,6 +27,14 @@ class UserList(Resource):
         """Creates a new User """
         data = request.json
         return save_new_user(data=data)
+        
+    @admin_token_required
+    @api.response(201, 'User successfully deleted.')
+    @api.doc('delete a user')
+    def delete(self, public_id):
+        """Delete a User """
+        print("Delete a user: ", public_id)
+        return del_a_user(public_id)
 
 
 @api.route('/<public_id>')

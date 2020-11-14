@@ -33,6 +33,25 @@ def get_a_user(public_id):
     return User.query.filter_by(public_id=public_id).first()
 
 
+def del_a_user(public_id):
+    user = User.query.filter_by(public_id=public_id).first()
+    if user:
+        user_delete = User.query.get(user.id)
+        delete_changes(user_delete)
+        response_object = {
+            'status': 'success',
+            'message': 'Successfully deleted.',
+            'public_id': public_id
+        }
+        return response_object, 201
+    else:
+        response_object = {
+            'status': 'fail',
+            'message': 'User not exists. Please Log in.',
+        }
+        return response_object, 404
+
+
 def generate_token(user):
     try:
         # generate the auth token
@@ -55,3 +74,7 @@ def save_changes(data):
     db.session.add(data)
     db.session.commit()
 
+
+def delete_changes(data):
+    db.session.delete(data)
+    db.session.commit()

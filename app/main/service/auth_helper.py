@@ -61,8 +61,10 @@ class Auth:
     def get_logged_in_user(new_request):
         # get the auth token
         auth_token = new_request.headers['Authorization']
+        # faz o split da string
         token=auth_token.split(" ",1)
         if auth_token and token:
+            # usa o elemento do indice 1 para identicar usuario
             resp = User.decode_auth_token(token[1])
             if isinstance(resp, str):
                 user = User.query.filter_by(public_id=resp).first()
