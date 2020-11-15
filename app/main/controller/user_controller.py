@@ -3,7 +3,7 @@ from flask_restx import Resource
 
 from app.main.util.decorator import admin_token_required, token_required
 from ..util.dto import UserDto
-from ..service.user_service import save_new_user, get_all_users, get_a_user, del_a_user
+from ..service.user_service import save_new_user, get_all_users, get_a_user, del_a_user, put_a_user
 
 api = UserDto.api
 _user = UserDto.user
@@ -27,14 +27,13 @@ class UserList(Resource):
         """Creates a new User """
         data = request.json
         return save_new_user(data=data)
-        
+
     @admin_token_required
     @api.response(201, 'User successfully deleted.')
     @api.doc('delete a user')
     def delete(self, public_id):
         """Delete a User """
-        print("Delete a user: ", public_id)
-        return del_a_user(public_id)
+        return del_a_user(public_id=public_id)
 
 
 @api.route('/<public_id>')
@@ -46,11 +45,20 @@ class User(Resource):
     @api.marshal_with(_user)
     def get(self, public_id):
         """get a user given its identifier"""
-        user = get_a_user(public_id)
+        user = get_a_user(public_id=public_id)
         if not user:
             api.abort(404)
         else:
             return user
 
-
-
+    @api.doc('get a user')
+    @token_required
+    @api.marshal_with(_user)
+    def put(self, public_id):
+        """get a user given its identifier"""
+        data = request.json
+        user = put_a_user(public_id=public_id, data=data)
+        if not user:
+            api.abort(404)
+        else:
+            return user

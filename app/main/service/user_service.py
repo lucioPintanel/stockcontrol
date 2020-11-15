@@ -33,6 +33,30 @@ def get_a_user(public_id):
     return User.query.filter_by(public_id=public_id).first()
 
 
+def put_a_user(public_id, data):
+    user = User.query.filter_by(public_id=public_id).first()
+    if user:
+        user_put = User.query.get(user.id)
+        if data['email']:
+            user_put.email = data['email']
+        if data['username']:
+            user_put.username = data['username']
+
+        save_changes(user_put)
+        response_object = {
+            'status': 'success',
+            'message': 'Successfully deleted.',
+            'public_id': public_id
+        }
+        return response_object, 201
+    else:
+        response_object = {
+            'status': 'fail',
+            'message': 'User not exists. Please Log in.',
+        }
+        return response_object, 404
+
+
 def del_a_user(public_id):
     user = User.query.filter_by(public_id=public_id).first()
     if user:
