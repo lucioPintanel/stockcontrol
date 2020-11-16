@@ -35,7 +35,6 @@ def update_typeUnit(data):
 def del_type_unit(__id):
     typeUnit = TypeUnit.query.get(int(__id))
     if typeUnit:
-        print("IF")
         delete_changes(typeUnit)
         response_object = {
             'status': 'success',
