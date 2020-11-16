@@ -10,7 +10,6 @@ _user = UserDto.user
 
 
 @api.route('/')
-@api.route('/<public_id>')
 class UserList(Resource):
     @api.doc('list_of_registered_users')
     @admin_token_required
@@ -31,9 +30,10 @@ class UserList(Resource):
     @admin_token_required
     @api.response(201, 'User successfully deleted.')
     @api.doc('delete a user')
-    def delete(self, public_id):
+    def delete(self):
         """Delete a User """
-        return del_a_user(public_id=public_id)
+        data = request.json
+        return del_a_user(public_id=data['public_id'])
 
 
 @api.route('/<public_id>')
