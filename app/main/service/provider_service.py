@@ -1,3 +1,5 @@
+import json
+from json2object import jsontoobject as jo
 from app.main import db
 from app.main.model.provider import Provider
 
@@ -25,16 +27,16 @@ def save_new_provider(data):
 def update_provider(data):
     provider = Provider.query.filter_by(cnpj=data['cnpj']).first()
     if provider:
-        if not provider.name == data['name']:
+        if "name" in data:
             provider.name = data['name']
 
-        if not provider.contact == data['contact']:
+        if "contact" in data:
             provider.contact = data['contact']
 
-        if not provider.email == data['email']:
+        if "email" in data:
             provider.email = data['email']
 
-        if not provider.telephone == data['telephone']:
+        if "telephone" in data:
             provider.telephone = data['telephone']
 
         db.session.commit()

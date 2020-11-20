@@ -12,6 +12,9 @@ flask-migrate = "*"
 pyjwt = "*"
 flask-script = "*"
 flask-testing = "*"
+jsonpickle = "*"
+json2object = "*"
+flask-serialize = "*"
 
 [requires]
 python_version = "3.7"
