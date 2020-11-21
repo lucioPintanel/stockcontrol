@@ -40,6 +40,6 @@ class TypeUnitList(Resource):
 
     @token_required
     @api.response(201, 'Type Unit successfully deleted.')
-    @api.doc('Delete a new type unit')
+    @api.doc('Delete a type unit')
     def delete(self,id):
         return del_type_unit(__id=id)
