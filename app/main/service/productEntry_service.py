@@ -33,26 +33,26 @@ def update_productEntry(data):
             productEntry.value_unity = data['value_unity']
 
         if "issuance_date" in data:
-            productEntry.value_unity = data['issuance_date']
+            productEntry.issuance_date = data['issuance_date']
         
         db.session.commit()
         return {"mensagem": "Alterado com sucesso no data base!"}
     else:
         response_object = {
             'status': 'fail',
-            'message': 'Type unit already exists. Please Log in.',
+            'message': 'Product Entry already exists. Please Log in.',
         }
         return response_object, 409
 
 
 def del_productEntry(data):
-    productEntry = ProductEntry.query.filter_by(cnpj=data['cnpj']).first()
+    productEntry = ProductEntry.query.filter_by(id_product=data['id_product']).first()
     if productEntry:
         delete_changes(productEntry)
         response_object = {
             'status': 'success',
             'message': 'Successfully deleted.',
-            'public_id': data['cnpj']
+            'id_product': data['id_product']
         }
         return response_object, 201
     else:
@@ -70,6 +70,7 @@ def get_all_productEntry():
 def __save_changes(data):
     db.session.add(data)
     db.session.commit()
+
 
 def delete_changes(data):
     db.session.delete(data)

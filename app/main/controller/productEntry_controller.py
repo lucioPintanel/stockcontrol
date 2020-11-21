@@ -10,7 +10,6 @@ api = ProEntryDto.api
 _prodEntry = ProEntryDto.prodEntry
 
 @api.route('/')
-@api.route('/<item_id>')
 class ProductOutList(Resource):
     @api.doc('list_of_registered_product_entry')
     @api.marshal_list_with(_prodEntry, envelope='data')
@@ -28,8 +27,8 @@ class ProductOutList(Resource):
         return save_new_productEntry(data=data) 
 
     @token_required
-    @api.response(201, 'Product entry successfully created.')
-    @api.doc('create a new Product entry')
+    @api.response(201, 'Product entry successfully updated.')
+    @api.doc('Update a Product entry')
     def put(self):
         """Update a Product entry """
         data = request.json
@@ -37,7 +36,7 @@ class ProductOutList(Resource):
 
     @admin_token_required
     @api.response(201, 'Product entry successfully deleted.')
-    @api.doc('delete a Product entry')
+    @api.doc('Delete a Product entry')
     def delete(self):
         """Delete a Product entry """
         data = request.json
