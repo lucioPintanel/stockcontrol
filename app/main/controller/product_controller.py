@@ -3,7 +3,8 @@ from flask_restx import Resource
 
 from ..util.dto import ProductDto
 
-from ..service.product_service import get_all_product, save_new_product
+from app.main.util.decorator import admin_token_required, token_required
+from ..service.product_service import get_all_product, save_new_product, update_product, del_product
 
 api = ProductDto.api
 _product = ProductDto.product
@@ -17,9 +18,26 @@ class ProductList(Resource):
         return get_all_product()
 
     @api.expect(_product, validate=True)
+    @token_required
     @api.response(201, 'Product successfully created.')
     @api.doc('create a new product')
     def post(self):
         """Creates a new Product """
         data = request.json
         return save_new_product(data=data) 
+
+    @token_required
+    @api.response(201, 'Product successfully updated.')
+    @api.doc('Update a Product')
+    def put(self):
+        """Update a Product """
+        data = request.json
+        return update_product(data=data) 
+
+    @admin_token_required
+    @api.response(201, 'Product successfully deleted.')
+    @api.doc('Delete a Product')
+    def delete(self):
+        """Delete a Product """
+        data = request.json
+        return del_product(data)

@@ -19,6 +19,7 @@ class ProductOutList(Resource):
         return get_all_productOut()
 
     @api.expect(_prodOut, validate=True)
+    @token_required
     @api.response(201, 'Product out successfully created.')
     @api.doc('create a new product out')
     def post(self):
