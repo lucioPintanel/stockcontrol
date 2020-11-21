@@ -26,6 +26,13 @@ class TUnitDto:
     })
 
 
+class TSectorDto:
+    api = Namespace('sector', description='sector related operations')
+    sector = api.model('sector', {
+        'sector': fields.String(required=True, description='setor onde vão ficar os produtos')
+    })
+
+
 class ProductDto:
     api = Namespace('product', description='product related operations')
     product = api.model('product', {

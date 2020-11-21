@@ -25,7 +25,7 @@ class TypeUnitList(Resource):
     @api.response(201, 'Type Unit successfully created.')
     @api.doc('create a new type unit')
     def post(self):
-        """Creates a new User """
+        """Creates a new Type Unit """
         data = request.json
         return save_new_typeUnit(data=data)
 
