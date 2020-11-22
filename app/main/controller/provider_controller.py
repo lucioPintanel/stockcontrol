@@ -28,8 +28,8 @@ class ProviderList(Resource):
         return save_new_provider(data=data) 
 
     @token_required
-    @api.response(201, 'Provider successfully created.')
-    @api.doc('create a new provider')
+    @api.response(201, 'Provider successfully updated.')
+    @api.doc('Update a provider')
     def put(self):
         """Update a provider """
         data = request.json
@@ -41,4 +41,4 @@ class ProviderList(Resource):
     def delete(self):
         """Delete a Provider """
         data = request.json
-        return del_provider(data)
+        return del_provider(data=data)

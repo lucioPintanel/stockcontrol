@@ -23,7 +23,7 @@ def save_new_product(data):
         return response_object, 409
 
 
-def update_productEntry(data):
+def update_product(data):
     product = Product.query.filter_by(id=data['id']).first()
     if product:
         if "name" in data:
@@ -67,7 +67,7 @@ def del_product(data):
     else:
         response_object = {
             'status': 'fail',
-            'message': 'Product Entry not exists. Please Log in.',
+            'message': 'Product not exists. Please Log in.',
         }
         return response_object, 404
 
